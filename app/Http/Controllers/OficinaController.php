@@ -46,19 +46,27 @@ class OficinaController extends Controller
     	
     }
     public function updateOficina (Request $request,$id){
-        $value = $request->header('x-www-form-url-encoded');
-        return response(["data"=>$value]);	
+     
+        $now = new \DateTime();
         $actualizar_area= OficinaModel::findOrFail($id);
-        //$actualizar_area->imagen_oficina=$request->imagen;
-        $actualizar_area->nombre_oficina="beb";
-        /*
+
+        if($request->imagen!=null){
+            $ldate = date('Y-m-d-H_i_s');
+            $file = $request->file('imagen');
+            $nombre = $file->getClientOriginalName();     
+            \Storage::disk('local')->put($ldate.$nombre,  \File::get($file));
+            $actualizar_area->imagen_oficina=$ldate.$nombre;
+        }
+        
+        $actualizar_area->nombre_oficina=$request->nombre;
+        
         $actualizar_area->descripcion_oficina=$request->descripcion;
         $actualizar_area->piso_oficina=$request->piso;
         $actualizar_area->latitud_oficina=$request->latitud;
         $actualizar_area->longitud_oficina=$request->longitud;
         $actualizar_area->id_area=$request->area;
-        $actualizar_area->created_on="2002-09-08";
-        $actualizar_area->estado_oficina=1;*/
+        $actualizar_area->created_on=$now->format('Y-m-d H:i:s');
+        $actualizar_area->estado_oficina=1;
         $actualizar_area->save();
         return response(["data"=>0]);
     }

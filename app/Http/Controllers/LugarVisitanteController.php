@@ -22,3 +22,4 @@ class LugarVisitanteController extends Controller
         return response(["data"=>$request->all()]);
     }
 }
+//sIOuFj8B~

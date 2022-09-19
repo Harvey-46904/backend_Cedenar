@@ -30,13 +30,16 @@ Route::delete("/area/{id}", "AreaController@deleteArea");
 Route::get("/oficina","OficinaController@getOficinas");
 Route::get("/oficina/{id}","OficinaController@getOficina");
 Route::post("/oficina","OficinaController@createOficina");
-Route::put("/oficina/{id}","OficinaController@updateOficina");
+Route::post("/oficinaupdate/{id}","OficinaController@updateOficina");
 Route::delete("/oficina/{id}", "OficinaController@deleteOficina");
 Route::get("/oficina/por/areas", "OficinaController@getOficinasPorAreas");
 
 Route::post("/visitalugar","LugarVisitanteController@agregar_lugar");
 
 Route::get("/estadistica/{tipo}", "EstadisticaController@estadistica_general");
+
+Route::post("/logearse","UsuarioController@login");
+
 /*
 visitaRouter.get("/", visitanteCtrl.getTipoVisitantes);
 visitaRouter.post("/", visitanteCtrl.registerVisita);
