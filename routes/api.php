@@ -40,6 +40,12 @@ Route::get("/estadistica/{tipo}", "EstadisticaController@estadistica_general");
 
 Route::post("/logearse","UsuarioController@login");
 
+
+Route::post("/user","UsuarioController@crear_usuario");
+Route::post("/cambios","CambiossistemaController@cambiar");
+Route::get("/cambios","CambiossistemaController@obtener_cambio");
+
+
 /*
 visitaRouter.get("/", visitanteCtrl.getTipoVisitantes);
 visitaRouter.post("/", visitanteCtrl.registerVisita);

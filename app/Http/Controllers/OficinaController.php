@@ -46,7 +46,7 @@ class OficinaController extends Controller
     	
     }
     public function updateOficina (Request $request,$id){
-     
+      //  return response(["data"=>$request->all()]);
         $now = new \DateTime();
         $actualizar_area= OficinaModel::findOrFail($id);
 
