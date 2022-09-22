@@ -23,7 +23,7 @@ class CambiossistemaController extends Controller
     public function pdf1(){
 
         $public_path = public_path();
-        $url = $public_path.'/storage/pdf/Manual del Visitante cliente usuario_v1.pdf.pdf';// depende de root en el archivo filesystems.php.
+        $url = $public_path.'/storage/pdf/Manual del Visitante cliente usuario_v1.pdf';// depende de root en el archivo filesystems.php.
         //verificamos si el archivo existe y lo retornamos
      
             return response()->download($url);
