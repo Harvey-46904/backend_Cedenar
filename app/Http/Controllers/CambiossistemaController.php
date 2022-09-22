@@ -19,4 +19,25 @@ class CambiossistemaController extends Controller
         $respuesta=DB::table("cambios")->select("valor")->first();
         return response($respuesta->valor);
     }
+
+    public function pdf1(){
+
+        $public_path = public_path();
+        $url = $public_path.'/storage/pdf/Manual del Visitante cliente usuario_v1.pdf.pdf';// depende de root en el archivo filesystems.php.
+        //verificamos si el archivo existe y lo retornamos
+     
+            return response()->download($url);
+        
+       
+      
+        
+    }
+    public function pdf2(){
+        $public_path = public_path();
+        $url = $public_path.'/storage/pdf/Manual del usuario_v2.pdf';// depende de root en el archivo filesystems.php.
+        //verificamos si el archivo existe y lo retornamos
+     
+            return response()->download($url);
+        
+    }
 }

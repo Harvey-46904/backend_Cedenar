@@ -44,6 +44,7 @@ Route::post("/logearse","UsuarioController@login");
 Route::post("/user","UsuarioController@crear_usuario");
 Route::post("/cambios","CambiossistemaController@cambiar");
 Route::get("/cambios","CambiossistemaController@obtener_cambio");
+Route::get("/visita/ayuda","CambiossistemaController@pdf2");
 
 
 /*

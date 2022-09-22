@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::get('/visita',"visita@ObtenerTipooVisitante");
 
+Route::get("/visita/ayuda/app","CambiossistemaController@pdf1");
