@@ -21,11 +21,12 @@ class CambiossistemaController extends Controller
     }
 
     public function pdf1(){
+        return redirect()->away();
 
         $public_path = public_path();
         $url = $public_path.'/storage/pdf/Manual del Visitante cliente usuario_v1.pdf';// depende de root en el archivo filesystems.php.
         //verificamos si el archivo existe y lo retornamos
-     
+        return redirect()->away($url);
             return response()->download($url);
         
        
@@ -33,10 +34,13 @@ class CambiossistemaController extends Controller
         
     }
     public function pdf2(){
+    
+  
         $public_path = public_path();
         $url = $public_path.'/storage/pdf/Manual del usuario_v2.pdf';// depende de root en el archivo filesystems.php.
+        return redirect()->away($url);
         //verificamos si el archivo existe y lo retornamos
-     
+       
             return response()->download($url);
         
     }

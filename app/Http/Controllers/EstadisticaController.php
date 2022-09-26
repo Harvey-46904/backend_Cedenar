@@ -8,11 +8,12 @@ class EstadisticaController extends Controller
 {
     
     public function estadistica_general($tipo){
+        $cantidad=5;
         switch ($tipo) {
             case 'Todo':
-                $general=DB::table("lugar_visita")
-                ->selectRaw('SUM(tipovisitante_lugar) as f')
-                ->groupBy('tipovisitante_lugar')
+                $general=DB::table("visita")
+                ->selectRaw('SUM(id_tipo_visitante) as f')
+                ->groupBy('id_tipo_visitante')
                 ->get();
                 $contador_visitas=array(
                     "Visita"=>$general[0]->f,
@@ -25,6 +26,7 @@ class EstadisticaController extends Controller
                 ->selectRaw('COUNT(*) as total')
                 ->groupBy('nombre_lugar')
                 ->orderBy("total", "desc")
+                ->take($cantidad)
                 ->get();
                 return response([
                    "general"=>$contador_visitas,
@@ -32,9 +34,9 @@ class EstadisticaController extends Controller
                 ]);
                 break;
             case 'Visitantes':
-                $general=DB::table("lugar_visita")
-                ->selectRaw('SUM(tipovisitante_lugar) as f')
-                ->groupBy('tipovisitante_lugar')
+                $general=DB::table("visita")
+                ->selectRaw('SUM(id_tipo_visitante) as f')
+                ->groupBy('id_tipo_visitante')
                 ->get();
                 $contador_visitas=array(
                 "Visita"=>$general[0]->f,
@@ -48,6 +50,7 @@ class EstadisticaController extends Controller
                 ->where("tipovisitante_lugar","=","1")
                 ->groupBy('nombre_lugar')
                 ->orderBy("total", "desc")
+                ->take($cantidad)
                 ->get();
                 return response([
                 "general"=>$contador_visitas,
@@ -55,9 +58,9 @@ class EstadisticaController extends Controller
                 ]);
                 break;
             case 'Clientes':
-                $general=DB::table("lugar_visita")
-                ->selectRaw('SUM(tipovisitante_lugar) as f')
-                ->groupBy('tipovisitante_lugar')
+                $general=DB::table("visita")
+                ->selectRaw('SUM(id_tipo_visitante) as f')
+                ->groupBy('id_tipo_visitante')
                 ->get();
                 $contador_visitas=array(
                     "Visita"=>0,
@@ -71,6 +74,7 @@ class EstadisticaController extends Controller
                 ->where("tipovisitante_lugar","=","2")
                 ->groupBy('nombre_lugar')
                 ->orderBy("total", "desc")
+                ->take($cantidad)
                 ->get();
                 return response([
                     "general"=>$contador_visitas,
@@ -78,9 +82,9 @@ class EstadisticaController extends Controller
                     ]);
                     break;
             case 'Usuarios':
-                $general=DB::table("lugar_visita")
-                ->selectRaw('SUM(tipovisitante_lugar) as f')
-                ->groupBy('tipovisitante_lugar')
+                $general=DB::table("visita")
+                ->selectRaw('SUM(id_tipo_visitante) as f')
+                ->groupBy('id_tipo_visitante')
                 ->get();
                 $contador_visitas=array(
                 "Visita"=>0,
@@ -94,6 +98,7 @@ class EstadisticaController extends Controller
                 ->where("tipovisitante_lugar","=","3")
                 ->groupBy('nombre_lugar')
                 ->orderBy("total", "desc")
+                ->take($cantidad)
                 ->get();
                  return response([
                 "general"=>$contador_visitas,
