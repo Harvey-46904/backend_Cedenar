@@ -84,7 +84,7 @@ class OficinaController extends Controller
         for ($i=0; $i <sizeof($datos) ; $i++) { 
           //  return response(["data"=>$datos[$i]->id]);
             $oficina=DB::table("oficina")
-            ->select("id_oficina","imagen_oficina as imagen","nombre_oficina","latitud_oficina","longitud_oficina","descripcion_oficina")
+            ->select("id_oficina","imagen_oficina as imagen","nombre_oficina","latitud_oficina","longitud_oficina","descripcion_oficina","camino")
             ->where("id_area","=",$datos[$i]->id)
             ->get();
             $datos[$i]->oficinas=$oficina;

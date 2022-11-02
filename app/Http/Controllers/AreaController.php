@@ -34,9 +34,16 @@ class AreaController extends Controller
    }
 
    public function deleteArea ($id){
+
+    $oficinas=DB::table("oficina")->select()->where("id_area","=",$id)->get();
+    if($oficinas==null){
         $eliminar_area= AreasModel::findOrFail($id);
         $eliminar_area->delete();
-        return response(["data"=>0]);
+        return response(["status"=>0]);
+    }else{
+        return response(["status"=>1]);
+    }
+      
    }
     
     /*

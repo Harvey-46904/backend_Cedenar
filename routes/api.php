@@ -47,6 +47,10 @@ Route::get("/cambios","CambiossistemaController@obtener_cambio");
 Route::get("/visita/ayuda","CambiossistemaController@pdf2");
 
 
+Route::Post("/enviar-correo","UsuarioController@enviar_correo");
+Route::Post("/renovar-contrasena","UsuarioController@cambio_contra");
+
+
 /*
 visitaRouter.get("/", visitanteCtrl.getTipoVisitantes);
 visitaRouter.post("/", visitanteCtrl.registerVisita);
